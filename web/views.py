@@ -7,3 +7,10 @@ class HomeView(TemplateView):
 
     def get(self, request):
         return render(request, self.template_name)
+
+
+class ExploreView(TemplateView):
+    template_name = 'public/explore.html'
+
+    def get(self, request):
+        return render(request, self.template_name)

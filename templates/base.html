@@ -23,8 +23,8 @@
             </div>
             <div class="col text-right" id="menu">
                 <ul class="list-inline">
-                    <li class="list-inline-item"><a href="#">Home</a></li>
-                    <li class="list-inline-item"><a href="#">Explore</a></li>
+                    <li class="list-inline-item"><a href="{% url 'home' %}">Home</a></li>
+                    <li class="list-inline-item"><a href="{% url 'explore' %}">Explore</a></li>
                     <li class="list-inline-item"><a href="#">About</a></li>
                     <li class="list-inline-item"><a href="#">Login</a></li>
                     <li class="list-inline-item"><a href="#" class="btn btn-danger">Signup</a></li>
@@ -33,8 +33,12 @@
         </div>
         <div class="container">
             <div class="text-center text-white">
-                <h1 >Find Friends to Learn With</h1>
-                <p>Learn together from your nearby location with other people</p>
+                <h1>{% block header-title %}{% endblock header-title %}</h1>
+                <p>
+                {% block header-body %}
+                    Learn together from your nearby location with other people
+                {% endblock header-body %}
+                    </p>
             </div>
         </div>
     </div>
