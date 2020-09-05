@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>{% block title %}{% endblock title %}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <style>
+        #header-background{
+            background-image: url(https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);
+            background-size: cover;
+        }
+        a:link, a:visited{
+            color:white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid p-4" id="header-background" >
+        <div class="row" id="header">
+            <div class="col" id="logo">
+                <h4>LearnWith</h4>
+            </div>
+            <div class="col text-right" id="menu">
+                <ul class="list-inline">
+                    <li class="list-inline-item"><a href="#">Home</a></li>
+                    <li class="list-inline-item"><a href="#">Explore</a></li>
+                    <li class="list-inline-item"><a href="#">About</a></li>
+                    <li class="list-inline-item"><a href="#">Login</a></li>
+                    <li class="list-inline-item"><a href="#" class="btn btn-danger">Signup</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="container">
+            <div class="text-center text-white">
+                <h1 >Find Friends to Learn With</h1>
+                <p>Learn together from your nearby location with other people</p>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>
