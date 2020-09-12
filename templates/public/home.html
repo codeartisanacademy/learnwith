@@ -9,3 +9,25 @@
 {% block title %}
     LearnWith Homepage
 {% endblock title %}
+
+
+{% block subjects %}
+<div class="row">
+                
+    {% if subjects %}
+        
+        {% for subject in subjects  %}
+            <div class="col-sm-3">
+                <div class="card">
+                    <img class="img-fluid" src="media/{{subject.picture}}" alt="">
+                    <h4>{{subject.name}}</h4>
+                </div>
+            </div>
+        {% endfor %}
+            
+    {% endif %}
+        
+    
+</div>
+{% endblock subjects %}
+    

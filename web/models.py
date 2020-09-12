@@ -14,6 +14,9 @@ class Profile(models.Model):
     profile_picture = models.ImageField(null=True, blank=True, upload_to='profiles/')
     gender = models.CharField(max_length=5, choices = GENDERS)
 
+    def __str__(self):
+        return self.user.first_name
+
 class Topic(models.Model):
     name = models.CharField(max_length=200)
     description = models.TextField(null=True, blank=True)
@@ -27,6 +30,7 @@ class Subject(models.Model):
     topic = models.ForeignKey(Topic, related_name='subjects', on_delete=models.CASCADE)
     description = models.TextField()
     user = models.ForeignKey(User, related_name='subjects', on_delete=models.CASCADE)
+    picture = models.ImageField(null=True, blank=True, upload_to="subjects/")
 
     def __str__(self):
         return self.name
