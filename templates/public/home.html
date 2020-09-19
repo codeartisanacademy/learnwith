@@ -12,15 +12,27 @@
 
 
 {% block subjects %}
-<div class="row">
+<div class="row mt-4">
+    <div class="col">
+        <h4>Explore Subjects You Can Learn Together</h4>
+    </div>
+</div>
+<div class="row mt-2">
                 
     {% if subjects %}
         
         {% for subject in subjects  %}
             <div class="col-sm-3">
-                <div class="card">
+                <div class="card h-100">
                     <img class="img-fluid" src="media/{{subject.picture}}" alt="">
-                    <h4>{{subject.name}}</h4>
+                    <div class="card-body">
+                        <p class="topic-label" ><small class="text-primary">{{subject.topic}}</small></p>
+                        <h5>{{subject.name}}</h5>
+                        <p>{{subject.description}}</p>
+                    </div>
+                    <div class="card-footer">
+                        <p><small>Organized by {{subject.user}}</small></p>
+                    </div>
                 </div>
             </div>
         {% endfor %}

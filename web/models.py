@@ -31,6 +31,7 @@ class Subject(models.Model):
     description = models.TextField()
     user = models.ForeignKey(User, related_name='subjects', on_delete=models.CASCADE)
     picture = models.ImageField(null=True, blank=True, upload_to="subjects/")
+    additional_information = models.TextField(null=True, blank=True)
 
     def __str__(self):
         return self.name
