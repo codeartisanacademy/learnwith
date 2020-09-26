@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from web.views import HomeView, ExploreView
+from web.views import HomeView, ExploreView, DetailSubjectView
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -24,6 +24,7 @@ urlpatterns = [
     path('summernote/', include('django_summernote.urls')),
     path('',HomeView.as_view(), name='home'),
     path('explore/', ExploreView.as_view(), name='explore'),
+    path('detail/<int:pk>', DetailSubjectView.as_view(), name="subject-detail"),
     path('accounts/', include('allauth.urls')),
 ]
 

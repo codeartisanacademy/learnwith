@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{subject.name}}
+{% endblock title %}
+
+{% block header-title %}
+    {{subject.name}}
+{% endblock header-title %}
+
+
+{% block subjects %}
+    <div class="row mt-4">
+        <div class="col-8">
+            <p>{{subject.topic}}</p>
+            <h3>{{subject.name}}</h3>
+            <p>Hosted by {{subject.user}}</p>
+            <h5>description</h5>
+            <p>{{subject.description}}</p>
+            <div>
+                <h5>Additional Information</h5>
+                {{subject.additional_information|safe}}
+            </div>
+        </div>
+        <div class="col-4">
+            <a href="#" class="btn btn-primary text-white">Book This Learning</a>
+        </div>
+    </div>
+{% endblock subjects %}
+    

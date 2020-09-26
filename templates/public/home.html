@@ -27,7 +27,7 @@
                     <img class="img-fluid" src="media/{{subject.picture}}" alt="">
                     <div class="card-body">
                         <p class="topic-label" ><small class="text-primary">{{subject.topic}}</small></p>
-                        <h5>{{subject.name}}</h5>
+                        <h5><a href="{% url 'subject-detail' subject.id  %}">{{subject.name}}</a></h5>
                         <p>{{subject.description}}</p>
                     </div>
                     <div class="card-footer">

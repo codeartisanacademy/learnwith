@@ -8,4 +8,4 @@ class SubjectAdmin(SummernoteModelAdmin):
 
 admin.site.register(Profile)
 admin.site.register(Topic)
-admin.site.register(Subject)
+admin.site.register(Subject, SubjectAdmin)
