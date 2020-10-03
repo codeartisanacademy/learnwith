@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block header-title %}
+    Profile
+{% endblock header-title %}
+    
+
+{% block title %}
+    LearnWith
+{% endblock title %}
+
+
+{% block subjects %}
+    <div class="row mt-4">
+        <div class="col-sm-2">
+            <ul class="list-unstyled">
+                <li><a href="#">Profile</a></li>
+                <li><a href="#">Subjects</a></li>
+                <li><a href="#">Reviews</a></li>
+            </ul>
+        </div>
+        <div class="col-sm-10">
+            <div class="card">
+                <div class="card-header">Profile</div>
+                <div class="card-body">
+                    <ul class="list-unstyled">
+                        <li>Username: {{user}}</li>
+                        <li>Username: {{user.email}}</li>
+                        <li>Full name: {{user.first_name}} {{user.last_name}} </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock subjects %}
+    

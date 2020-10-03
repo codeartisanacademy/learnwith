@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView, DetailView
-from web.models import Subject
+from web.models import Subject, Profile
 
 # Create your views here.
 class HomeView(TemplateView):
@@ -20,3 +20,8 @@ class ExploreView(TemplateView):
 
     def get(self, request):
         return render(request, self.template_name)
+
+class ProfileView(DetailView):
+    model = Profile
+    template_name = 'account/profile.html'
+    context_object_name = 'profile'

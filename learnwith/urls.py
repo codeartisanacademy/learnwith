@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from web.views import HomeView, ExploreView, DetailSubjectView
+from web.views import HomeView, ExploreView, DetailSubjectView, ProfileView
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -26,6 +26,7 @@ urlpatterns = [
     path('explore/', ExploreView.as_view(), name='explore'),
     path('detail/<int:pk>', DetailSubjectView.as_view(), name="subject-detail"),
     path('accounts/', include('allauth.urls')),
+    path('profile/<int:pk>', ProfileView.as_view(), name="profile"),
 ]
 
 if settings.DEBUG:
