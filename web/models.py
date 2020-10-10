@@ -16,6 +16,21 @@ class Profile(models.Model):
 
     def __str__(self):
         return self.user.first_name
+    
+    @property
+    def full_name(self):
+        return '{0} {1}'.format(self.user.first_name, self.user.last_name)
+
+    @property
+    def full_name_with_greeting(self):
+        full_name_with_greeting = ''
+        if self.gender == 'm':
+            full_name_with_greeting = '{0}. {1} {2}'.format("Mr", self.user.first_name, self.user.last_name)
+        else:
+            full_name_with_greeting = '{0}. {1} {2}'.format("Mrs.", self.user.first_name, self.user.last_name)
+
+        return full_name_with_greeting
+
 
 class Topic(models.Model):
     name = models.CharField(max_length=200)

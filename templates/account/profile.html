@@ -25,8 +25,11 @@
                 <div class="card-body">
                     <ul class="list-unstyled">
                         <li>Username: {{user}}</li>
-                        <li>Username: {{user.email}}</li>
-                        <li>Full name: {{user.first_name}} {{user.last_name}} </li>
+                        <li>Email: {{user.email}}</li>
+                        <li>Full name: {{profile.full_name}} </li>
+                        <li>Gender: {{profile.get_gender_display}}</li>
+                        <li>Bio: {{profile.bio}}</li>
+                        <li class="mt-4"><a href="{% url 'profile-edit' %}">Edit Profile</a></li>
                     </ul>
                 </div>
             </div>
