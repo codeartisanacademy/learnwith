@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import TemplateView, DetailView
+from django.views.generic import TemplateView, DetailView, ListView
 from web.models import Subject, Profile
 from django.contrib.auth.models import User
 from django.shortcuts import HttpResponseRedirect, reverse
@@ -40,9 +40,18 @@ class ProfileEditView(TemplateView):
 
     def post(self, request):
         profile = Profile.objects.get(user=request.user)
-        form = ProfileForm(request.POST)
+        form = ProfileForm(request.POST, instance=profile)
         if form.is_valid:
             form.save()
-            return HttpResponseRedirect(reverse('profile'))
+            return HttpResponseRedirect(reverse('profile', kwargs={'pk':request.user.id}))
         else: 
             return render(request, self.template_name, {'form':form})
+
+class MySubjectsListView(ListView):
+    model = Subject
+    
+    def get_queryset(self):
+        queryset = super(MySubjectsListView, self).get_queryset()
+        queryset = queryset.filter(user=self.request.user)
+        return queryset
+    

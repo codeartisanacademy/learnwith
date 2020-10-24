@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from web.views import HomeView, ExploreView, DetailSubjectView, ProfileView, ProfileEditView
+from web.views import HomeView, ExploreView, DetailSubjectView, ProfileView, ProfileEditView, MySubjectsListView
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -28,6 +28,7 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path('profile/<int:pk>', ProfileView.as_view(), name="profile"),
     path('profile/edit', ProfileEditView.as_view(), name="profile-edit"),
+    path('mysubjects/', MySubjectsListView.as_view(), name='mysubjects'),
 ]
 
 if settings.DEBUG:

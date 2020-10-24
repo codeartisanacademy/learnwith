@@ -50,3 +50,9 @@ class Subject(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class SubjectSubscription(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='subject_subscriptions')
+    subject = models.ForeignKey(Subject, on_delete=models.CASCADE, related_name='subcriptions')
+    subscription_date = models.DateTimeField(auto_now_add=True)
