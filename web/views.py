@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView, DetailView, ListView
-from web.models import Subject, Profile
+from web.models import Subject, Profile, LearningDate
 from django.contrib.auth.models import User
 from django.shortcuts import HttpResponseRedirect, reverse
 
@@ -54,4 +54,11 @@ class MySubjectsListView(ListView):
         queryset = super(MySubjectsListView, self).get_queryset()
         queryset = queryset.filter(user=self.request.user)
         return queryset
-    
+
+class ConfirmBookingView(TemplateView):
+    template_name = 'subjects/confirm.html'
+    id = None
+
+    def get(self, request, id):
+        learning_date = LearningDate.objects.get(id=id)
+        return render(request, self.template_name, {'learning_date':learning_date})

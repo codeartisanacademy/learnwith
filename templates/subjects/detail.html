@@ -23,7 +23,27 @@
             </div>
         </div>
         <div class="col-4">
-            <a href="#" class="btn btn-primary text-white">Book This Learning</a>
+            <div class="card">
+                <div class="card-header">
+                    <h5>Available Dates</h5>
+                </div>
+                <div class="card-body">
+                    
+                    {% if subject.dates.count > 0 %}
+                        <ul>
+                            
+                            {% for date in subject.dates.all  %}
+                                <li><a href="{% url 'confirm-booking' date.id  %}">{{date.learning_date|date:"d-m-Y, G:i"}}</a> </li>
+                            {% endfor %}
+                                
+                        </ul>
+                    {% else %}
+                        <p>This subject has no dates available</p>
+                    {% endif %}
+                        
+                </div>
+            </div>
+
         </div>
     </div>
 {% endblock subjects %}
