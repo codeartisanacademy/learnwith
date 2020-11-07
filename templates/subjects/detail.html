@@ -33,7 +33,10 @@
                         <ul>
                             
                             {% for date in subject.dates.all  %}
+                                
+                                
                                 <li><a href="{% url 'confirm-booking' date.id  %}">{{date.learning_date|date:"d-m-Y, G:i"}}</a> </li>
+                                
                             {% endfor %}
                                 
                         </ul>

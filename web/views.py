@@ -4,7 +4,7 @@ from web.models import Subject, Profile, LearningDate
 from django.contrib.auth.models import User
 from django.shortcuts import HttpResponseRedirect, reverse
 
-from .forms import ProfileForm
+from .forms import ProfileForm, SubjectSubscriptionForm
 
 # Create your views here.
 class HomeView(TemplateView):
@@ -61,4 +61,8 @@ class ConfirmBookingView(TemplateView):
 
     def get(self, request, id):
         learning_date = LearningDate.objects.get(id=id)
-        return render(request, self.template_name, {'learning_date':learning_date})
+        form = SubjectSubscriptionForm(initial={'subject':learning_date.subject, 'user':request.user, 'subscription_date':learning_date.learning_date})
+        return render(request, self.template_name, {'learning_date':learning_date, 'form':form })
+
+    def post(self, request, id):
+        pass

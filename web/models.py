@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+import datetime
+import pytz
 
 # Create your models here.
 class Profile(models.Model):
@@ -55,12 +57,21 @@ class Subject(models.Model):
 class SubjectSubscription(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='subject_subscriptions')
     subject = models.ForeignKey(Subject, on_delete=models.CASCADE, related_name='subcriptions')
-    subscription_date = models.DateTimeField(auto_now_add=True)
+    subscription_date = models.DateTimeField()
 
 
 class LearningDate(models.Model):
     subject = models.ForeignKey(Subject, on_delete=models.CASCADE, related_name='dates')
     learning_date = models.DateTimeField()
+    
 
     def __str__(self):
         return "{0} - {1}".format(self.subject.name, self.learning_date)
+    
+    @property
+    def future_date(self):
+        utc = pytz.UTC
+        # compare the date with the date of today
+        date_1 = utc.localize(self.learning_date)
+        date_2 = utc.localize(datetime.datetime.today())
+        return  self.learning_date > date_2
