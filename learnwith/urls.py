@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from web.views import HomeView, ExploreView, DetailSubjectView, ProfileView, ProfileEditView, MySubjectsListView, ConfirmBookingView
+from web.views import HomeView, ExploreView, DetailSubjectView, ProfileView, ProfileEditView, MySubjectsListView, ConfirmBookingView, LearningPlanView
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -30,6 +30,7 @@ urlpatterns = [
     path('profile/edit', ProfileEditView.as_view(), name="profile-edit"),
     path('mysubjects/', MySubjectsListView.as_view(), name='mysubjects'),
     path('confirm/<int:id>', ConfirmBookingView.as_view(), name="confirm-booking"),
+    path('learningplan/', LearningPlanView.as_view(), name='learningplan' ),
 ]
 
 if settings.DEBUG:

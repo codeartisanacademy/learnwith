@@ -1,8 +1,10 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView, DetailView, ListView
-from web.models import Subject, Profile, LearningDate
 from django.contrib.auth.models import User
 from django.shortcuts import HttpResponseRedirect, reverse
+from django.contrib.auth.mixins import LoginRequiredMixin
+
+from web.models import Subject, Profile, LearningDate, SubjectSubscription
 
 from .forms import ProfileForm, SubjectSubscriptionForm
 
@@ -55,7 +57,8 @@ class MySubjectsListView(ListView):
         queryset = queryset.filter(user=self.request.user)
         return queryset
 
-class ConfirmBookingView(TemplateView):
+class ConfirmBookingView(LoginRequiredMixin, TemplateView):
+    login_url = '/accounts/login'
     template_name = 'subjects/confirm.html'
     id = None
 
@@ -65,4 +68,16 @@ class ConfirmBookingView(TemplateView):
         return render(request, self.template_name, {'learning_date':learning_date, 'form':form })
 
     def post(self, request, id):
-        pass
+        learning_date = LearningDate.objects.get(id=id)
+        form = SubjectSubscriptionForm(request.POST)
+        if form.is_valid():
+            form.save()
+
+            return HttpResponseRedirect(reverse('subject-detail', kwargs={'pk': learning_date.subject.id }))
+        
+        else:
+            return render(request, self.template_name, {'learning_date':learning_date, 'form':form })
+
+
+class LearningPlanView(ListView):
+    model = SubjectSubscription

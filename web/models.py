@@ -59,6 +59,9 @@ class SubjectSubscription(models.Model):
     subject = models.ForeignKey(Subject, on_delete=models.CASCADE, related_name='subcriptions')
     subscription_date = models.DateTimeField()
 
+    def __str__(self):
+        return "{0} - {1} at {2}".format(self.user, self.subject, self.subscription_date)
+
 
 class LearningDate(models.Model):
     subject = models.ForeignKey(Subject, on_delete=models.CASCADE, related_name='dates')
